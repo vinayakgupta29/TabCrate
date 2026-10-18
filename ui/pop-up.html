@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+
+  <title>Tab Vault</title>
+
+  <link rel="stylesheet" href="style.css">
+  <script type="module" src="popup.js"></script>
+</head>
+
+<body>
+  <main class="app">
+
+    <!-- Header -->
+    <header class="header">
+      <div class="brand">
+        <div class="brand-icon" aria-hidden="true">▤</div>
+
+        <div class="brand-text">
+          <h1>Tab Vault</h1>
+          <p>LOCAL-FIRST TAB MANAGER</p>
+        </div>
+      </div>
+
+      <button id="refresh-button" class="icon-button" type="button" title="Refresh windows"
+        aria-label="Refresh windows">
+        ↻
+      </button>
+    </header>
+
+    <!-- Export -->
+    <section class="section" aria-labelledby="export-heading">
+      <div class="section-heading">
+        <div>
+          <h2 id="export-heading">Export tabs</h2>
+          <p>Choose which windows to include.</p>
+        </div>
+      </div>
+
+      <div id="scope-selector" class="scope-selector" role="group" aria-label="Export scope">
+        <button class="scope-option active" type="button" data-scope="current_window" aria-pressed="true">
+          <span class="scope-icon" aria-hidden="true">▣</span>
+          <span>Current</span>
+        </button>
+
+        <button class="scope-option" type="button" data-scope="all_windows" aria-pressed="false">
+          <span class="scope-icon" aria-hidden="true">▦</span>
+          <span>All windows</span>
+        </button>
+
+        <button class="scope-option" type="button" data-scope="select_windows" aria-pressed="false">
+          <span class="scope-icon" aria-hidden="true">☷</span>
+          <span>Select</span>
+        </button>
+      </div>
+
+      <!-- Populated by popup.js -->
+      <div id="window-list" class="window-list" hidden></div>
+
+      <div class="selection-summary">
+        <span id="selection-summary-text">Loading windows…</span>
+      </div>
+
+      <div class="action-row">
+        <button id="export-button" class="button button-primary" type="button" disabled>
+          <span aria-hidden="true">↓</span>
+          Export TXT
+        </button>
+
+        <button id="save-button" class="button button-secondary" type="button" disabled>
+          <span aria-hidden="true">▣</span>
+          Save snapshot
+        </button>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- Saved snapshots -->
+    <section class="section" aria-labelledby="snapshots-heading">
+      <div class="section-heading section-heading-inline">
+        <div>
+          <h2 id="snapshots-heading">Saved snapshots</h2>
+          <p>Your locally saved browsing sessions.</p>
+        </div>
+
+        <span id="snapshot-count" class="count-badge">0</span>
+      </div>
+
+      <div id="snapshot-list" class="snapshot-list">
+        <div class="empty-state">
+          <span class="empty-icon" aria-hidden="true">▤</span>
+          <p>No snapshots yet</p>
+          <span>Save your current tabs to get started.</span>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- Import -->
+    <section class="section" aria-labelledby="import-heading">
+      <div class="section-heading">
+        <div>
+          <h2 id="import-heading">Import TXT</h2>
+          <p>Restore tabs from a text export.</p>
+        </div>
+      </div>
+
+      <label class="file-picker" for="import-file">
+        <span class="file-picker-icon" aria-hidden="true">↑</span>
+
+        <span class="file-picker-text">
+          <strong>Choose a TXT file</strong>
+          <span>URLs or multi-window format</span>
+        </span>
+
+        <span class="file-picker-action">Browse</span>
+      </label>
+
+      <input id="import-file" type="file" accept=".txt,text/plain" hidden>
+
+      <div id="import-preview" class="import-preview" hidden>
+        <div class="preview-heading">
+          <strong>Import preview</strong>
+          <button id="cancel-import-button" class="text-button" type="button">
+            Cancel
+          </button>
+        </div>
+
+        <div id="import-preview-summary"></div>
+        <ul id="import-errors" class="import-errors"></ul>
+
+        <button id="restore-import-button" class="button button-primary button-full" type="button" disabled>
+          Open in new windows
+        </button>
+      </div>
+    </section>
+
+    <!-- Status and feedback -->
+    <footer class="footer">
+      <span class="status-dot" aria-hidden="true"></span>
+      <span id="status-text" role="status" aria-live="polite">
+        Ready
+      </span>
+    </footer>
+
+  </main>
+</body>
+
+</html>
