@@ -74,16 +74,26 @@ export function parseWindows(text) {
       windows.push(currentWindow);
     }
 
+    let candidate = value;
+    // Auto-prepend https:// if protocol is missing (e.g. github.com)
+    if (!/^[a-zA-Z][a-zA-Z0-9+.-]*:\/\//i.test(candidate) && !candidate.startsWith("about:")) {
+      candidate = `https://${candidate}`;
+    }
+
     let url;
 
     try {
-      url = new URL(value);
+      url = new URL(candidate);
     } catch {
       invalidLines.push({ line: i + 1, value });
       continue;
     }
 
-    if (!["http:", "https:", "ftp:", "file:"].includes(url.protocol)) {
+    // Only allow restorable web URLs or about:blank
+    const isSafeWeb = ["http:", "https:", "ftp:"].includes(url.protocol);
+    const isSafeAbout = url.protocol === "about:" && (url.pathname === "blank" || url.href === "about:blank");
+
+    if (!isSafeWeb && !isSafeAbout) {
       invalidLines.push({ line: i + 1, value });
       continue;
     }

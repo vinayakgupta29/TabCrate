@@ -1,6 +1,6 @@
 {
     "manifest_version": 3,
-    "name": "Tab Vault",
+    "name": "Tab Crate",
     "version": "1.0.0",
     "description": "Export, save, and restore browser tabs across multiple windows.",
     "permissions": [
@@ -9,8 +9,8 @@
         "downloads"
     ],
     "action": {
-        "default_title": "Tab Vault",
-        "default_popup": "ui/popup.html",
+        "default_title": "Tab Crate",
+        "default_popup": "ui/pop-up.html",
         "default_icon": {
             "16": "icons/icon-16.png",
             "32": "icons/icon-32.png",

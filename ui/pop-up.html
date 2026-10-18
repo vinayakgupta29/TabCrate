@@ -6,10 +6,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="dark">
 
-  <title>Tab Vault</title>
+  <title>Tab Crate</title>
 
   <link rel="stylesheet" href="style.css">
-  <script type="module" src="popup.js"></script>
+  <script type="module" src="pop-up.js"></script>
 </head>
 
 <body>
@@ -21,7 +21,7 @@
         <div class="brand-icon" aria-hidden="true">▤</div>
 
         <div class="brand-text">
-          <h1>Tab Vault</h1>
+          <h1>Tab Crate</h1>
           <p>LOCAL-FIRST TAB MANAGER</p>
         </div>
       </div>
@@ -148,6 +148,24 @@
         Ready
       </span>
     </footer>
+
+    <!-- App Modal (In-DOM dialog for prompts and confirms) -->
+    <div id="modal-backdrop" class="modal-backdrop" hidden>
+      <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+        <div class="modal-header">
+          <h3 id="modal-title" class="modal-title">Title</h3>
+        </div>
+        <p id="modal-message" class="modal-message" hidden></p>
+        <div id="modal-input-container" class="modal-input-container" hidden>
+          <input id="modal-input" class="modal-input" type="text" autocomplete="off" spellcheck="false" />
+        </div>
+        <div id="modal-custom-actions" class="modal-custom-actions" hidden></div>
+        <div class="modal-actions" id="modal-actions-container">
+          <button id="modal-cancel-button" class="button button-secondary" type="button">Cancel</button>
+          <button id="modal-confirm-button" class="button button-primary" type="button">Confirm</button>
+        </div>
+      </div>
+    </div>
 
   </main>
 </body>

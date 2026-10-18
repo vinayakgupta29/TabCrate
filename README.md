@@ -46,14 +46,12 @@ TabCrate/
 │   └── manifest.json       # Manifest V2 configuration
 ├── shared/                 # Shared core logic (platform-agnostic)
 │   ├── snapshot.js         # Window & tab restoration engine
-│   ├── snapshots.js        # Re-export compatibility layer
 │   ├── storage.js          # Local storage snapshot CRUD operations
 │   ├── tabs.js             # Browser window and tab querying helpers
 │   └── text_format.js      # Plain-text serializer and parser
 ├── ui/                     # Common user interface
-│   ├── pop-up.html         # Main popup interface
-│   ├── popup.html          # Alternative/fallback popup entry
-│   ├── popup.js            # UI event controller and DOM renderer
+│   ├── pop-up.html         # Popup and full tab interface
+│   ├── pop-up.js           # UI event controller and DOM renderer
 │   └── style.css           # Dark theme design system & layout styling
 ├── icons/                  # High-resolution PNG and ICO icons
 ├── scripts/

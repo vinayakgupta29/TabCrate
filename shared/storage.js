@@ -1,6 +1,6 @@
 const api = globalThis.browser ?? globalThis.chrome;
 
-const STORAGE_KEY = "tabVault.snapshots";
+const STORAGE_KEY = "tabCrate.snapshots";
 
 /**
  * Read all saved snapshots.
